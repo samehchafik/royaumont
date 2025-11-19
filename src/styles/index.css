@@ -107,7 +107,9 @@ body {
 
 
 
-
+button {
+    text-transform: capitalize;
+}
 
 .bt-play{
     z-index: 11;
