@@ -67,12 +67,18 @@ export default function Gallerie({ manifest, url, onSelect }) {
 
         return (
           <li key={item.id} className="item">
+          { manifest !== item.manifestUrl ? 
             <a href={href} onClick={handleClick(item.manifestUrl)}>
               {item.image && (
                 <img className="img" src={item.image} alt={item.label} loading="lazy" />
               )}
               <span className="label">{item.label}</span>
-            </a>
+            </a> : <div>
+              {item.image && (
+                <img className="img" src={item.image} alt={item.label} loading="lazy" />
+              )}
+              <span className="label">{item.label}</span>
+            </div>}
           </li>
         );
       })}

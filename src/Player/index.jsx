@@ -11,7 +11,8 @@ import {
   LocaleString,
   ComplexTimelineControls,
 } from 'player-iiif-video';
-
+import TimelineEvents from "./TimelineEvents";
+import ControlsBridge from './ControlsBridge';
 const runtimeOptions = { maxOverZoom: 5 };
 
 function CanvasAnnotations() {
@@ -36,17 +37,52 @@ function Label() {
   return <LocaleString as="h2" className="text-2xl my-3">{manifest.label}</LocaleString>;
 }
 
-const components = {
-  ComplexTimelineControls, // montera à l’endroit où le provider est dispo
-};
+function TimelineControlsBundle({ onControlsReady, onPlay=()=>{}, onPause=()=>{} }) {
+  return (
+    <>
+      <TimelineEvents
+        onReady={() => console.log('READY')}
+        onPlay={() => {
+            onPlay()
+        }}
+        onPause={() => {
+            onPause()
+        }}
+        onStop={() => console.log('STOP')}
+        onBuffering={(b) => console.log('BUFFERING:', b)}
+        onPrimeChange={(prime) => console.log('PRIME:', prime)}
+        onEnter={(id, kf) => console.log('ENTER:', id, kf)}
+        onExit={(id) => console.log('EXIT:', id)}
+      />
+      <ControlsBridge onReady={onControlsReady} />
+      <ComplexTimelineControls />
+
+      
+    </>
+  );
+}
+
+function ControlsSlot(props) {
+  // onControlsReady est fermé par le scope via props reçues de Player
+  return <TimelineControlsBundle onControlsReady={props.onControlsReady} />;
+}
 
 export default function Player({
   manifest,
+  onControlsReady,
+  onPlay,
+  onPause,
   startCanvas,
   pagingEnabledDefault = true,
 }) {
   const ref = useRef(null);
   const [pagingEnabled, setPagingEnabled] = useState(pagingEnabledDefault);
+
+  const components = React.useMemo(() => {
+    // On injecte onControlsReady via props quand CanvasPanel rend le slot
+    const Slot = () => <ControlsSlot onControlsReady={onControlsReady} onPlay={onPlay} onPause={onPause}/>;
+    return { ComplexTimelineControls: Slot };
+  }, [onControlsReady]);
 
   return (
     <>
@@ -128,6 +164,7 @@ export default function Player({
             empty: 'text-gray-400',
           }}
         />
+        
       </CanvasPanel>
     </>
   );
