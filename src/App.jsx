@@ -1,5 +1,5 @@
 // App.jsx (JS pur)
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import qs from 'query-string';
 
 
@@ -17,7 +17,7 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState("bt-play");
 
   const { manifest, gallerie } = query;
 
@@ -25,21 +25,34 @@ export default function App() {
 
   const manifestUrl = manifest || 'https://gist.githubusercontent.com/stephenwf/57cc5024144c53d48cc3c07cc522eb94/raw/a87a5d9a8f949bfb11cebd4f011a204abe8a932b/manifest.json';
 
+
+  const handleControlsReady = useCallback((api) => { ctlRef.current = api; }, []);
+  const handlePlay         = useCallback(() => {console.log("play"); setPlaying('bt-play hide')}, []);
+  const handlePause        = useCallback(() => {console.log("pause");setPlaying('bt-play')}, []);
+
+
   return (
     <>
       <div className='signature'></div>
-      {!playing ? <div className='bt-play'>
+      <div className={playing}>
         <button onClick={() => {
-        ctlRef.current?.play()
+        ctlRef.current?.play();
+        setPlaying('bt-play hide')
+        setTimeout(()=>{ctlRef.current?.play()}, 200);
       }}>Play</button> 
-      </div>: ""}
+      </div>
       {gallerie ? (
         <div>
           <Gallerie manifest={manifestUrl} url={gallerie} />
         </div>
       ) : null}
       <div className='player'>
-        <Player manifest={manifestUrl} onControlsReady={(api) => { ctlRef.current = api; }} onPlay={()=>{setPlaying(true)}} onPause = {()=>{setPlaying(false)}}/>
+        <Player
+          manifest={manifestUrl}
+          onControlsReady={handleControlsReady}
+          onPlay={handlePlay}
+          onPause={handlePause}
+        />
       </div>
     </>
   );

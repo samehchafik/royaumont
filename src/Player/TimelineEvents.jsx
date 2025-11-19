@@ -1,5 +1,5 @@
 // TimelineEvents.jsx
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useComplexTimeline } from "player-iiif-video";
 
 export default function TimelineEvents({
@@ -12,6 +12,9 @@ export default function TimelineEvents({
   onEnter,    // (id, keyframe)
   onExit,     // (id)
 }) {
+
+  const [playing, setPlaying] = useState(false); 
+  const [timer, setTirmer] = useState(Date.now()); 
   const isReady         = useComplexTimeline(s => s.isReady);
   const isPlaying       = useComplexTimeline(s => s.isPlaying);
   const isBuffering     = useComplexTimeline(s => s.isBuffering);
@@ -19,8 +22,20 @@ export default function TimelineEvents({
   const currentPrime    = useComplexTimeline(s => s.currentPrime);
   const nextKeyIdx      = useComplexTimeline(s => s.nextKeyframeIndex);
 
+  const prevPlaying = useRef(isPlaying);
+  useEffect(() => {
+    console.log("TimelineEvents.useEffect", prevPlaying, isPlaying, (Date.now() - timer))
+    if(isPlaying && prevPlaying.current !== isPlaying){
+        setPlaying(true)
+        setTirmer(Date.now())
+        onPlay()
+    } else if( prevPlaying.current !== isPlaying || playing === true && (Date.now() - timer) > 500) {
+        setPlaying(false)
+        onPause()
+    }
+  }, [isPlaying])
   // Ready
-  useEffect(() => { if (isReady) onReady?.(); }, [isReady]);
+  /*useEffect(() => { if (isReady) onReady?.(); }, [isReady]);
 
   // Play / Pause
   const prevPlaying = useRef(isPlaying);
@@ -70,7 +85,7 @@ export default function TimelineEvents({
       }
     }
     prevVisible.current = visibleElements;
-  }, [visibleElements]);
+  }, [visibleElements]);*/
 
   return null;
 }
