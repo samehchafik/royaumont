@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useMemo, useCallback } from 'react';
 import {
   CanvasPanel,
   RenderAnnotationPage,
@@ -63,8 +63,13 @@ function TimelineControlsBundle({ onControlsReady, onPlay=()=>{}, onPause=()=>{}
 }
 
 function ControlsSlot(props) {
-  // onControlsReady est fermé par le scope via props reçues de Player
-  return <TimelineControlsBundle onControlsReady={props.onControlsReady} />;
+  return (
+    <TimelineControlsBundle
+      onControlsReady={props.onControlsReady}
+      onPlay={props.onPlay}
+      onPause={props.onPause}
+    />
+  );
 }
 
 export default function Player({
@@ -77,12 +82,33 @@ export default function Player({
 }) {
   const ref = useRef(null);
   const [pagingEnabled, setPagingEnabled] = useState(pagingEnabledDefault);
-
-  const components = React.useMemo(() => {
-    // On injecte onControlsReady via props quand CanvasPanel rend le slot
-    const Slot = () => <ControlsSlot onControlsReady={onControlsReady} onPlay={onPlay} onPause={onPause}/>;
+  const handlePlay  = useCallback(() => onPlay?.(), [onPlay]);
+  const handlePause = useCallback(() => onPause?.(), [onPause]);
+  const components = useMemo(() => {
+    const Slot = () => (
+      <>
+         <ComplexTimelineControls />
+         <ControlsBridge onReady={onControlsReady} />
+         <TimelineEvents
+            onReady={() => console.log('READY')}
+            onPlay={()=>{
+                handlePlay()}
+            }
+            onPause={()=>{
+                handlePause()}
+            }
+            onStop={() => console.log('STOP')}
+            onBuffering={(b) => console.log('BUFFERING:', b)}
+            onPrimeChange={(prime) => console.log('PRIME:', prime)}
+            onEnter={(id, kf) => console.log('ENTER:', id, kf)}
+            onExit={(id) => console.log('EXIT:', id)}
+        />
+        
+       
+      </>
+    );
     return { ComplexTimelineControls: Slot };
-  }, [onControlsReady]);
+  }, [onControlsReady, onPlay, onPause]);
 
   return (
     <>
@@ -100,7 +126,6 @@ export default function Player({
       `}</style>
 
       <CanvasPanel
-        key={`${manifest}-${startCanvas}`}
         ref={ref}
         spacing={20}
         height={800}
