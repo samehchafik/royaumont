@@ -61,27 +61,32 @@ export default function Gallerie({ manifest, url, onSelect }) {
   if (!items.length) return <div className="gallerie empty">Aucun élément</div>;
 
   return (
-    <ul className="gallerie">
-      {items.map((item) => {
-        const href = `#manifest=${item.manifestUrl}&gallerie=${url}`;
+    <div class='gallerie-contenaire'>
+        <ul className="gallerie">
+        {items.map((item) => {
+            const href = `#manifest=${item.manifestUrl}&gallerie=${url}`;
 
-        return (
-          <li key={item.id} className="item">
-          { manifest !== item.manifestUrl ? 
-            <a href={href} onClick={handleClick(item.manifestUrl)}>
-              {item.image && (
-                <img className="img" src={item.image} alt={item.label} loading="lazy" />
-              )}
-              <span className="label">{item.label}</span>
-            </a> : <div>
-              {item.image && (
-                <img className="img" src={item.image} alt={item.label} loading="lazy" />
-              )}
-              <span className="label">{item.label}</span>
-            </div>}
-          </li>
-        );
-      })}
-    </ul>
+            return (
+            <li key={item.id} className={`item${manifest !== item.manifestUrl?'':' active'}`}>
+            { manifest !== item.manifestUrl ? 
+                <a href={href} onClick={handleClick(item.manifestUrl)}>
+                {item.image && (
+                    <img className="img" src={item.image} alt={item.label} loading="lazy" />
+                )}
+                <span className="label">{item.label}</span>
+                <span className='info'>i</span>
+                </a> : <div>
+                {item.image && (
+                    <img className="img" src={item.image} alt={item.label} loading="lazy" />
+                )}
+                <span className="label">{item.label}</span>
+                <span className='info'>i</span>
+                </div>}
+            </li>
+            );
+        })}
+        </ul>
+        <div class="info-box"></div>
+    </div>
   );
 }
