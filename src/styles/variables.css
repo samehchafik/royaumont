@@ -4,3 +4,79 @@
 --secondary-color: #cc1900;
 --ternary-color: #4e56e4;
 
+
+@font-face {
+  font-family:DINPro-Regular;
+  src:url(../fonts/DINPro-Regular.eot);
+  src:url(../fonts/DINPro-Regular.woff2) format("woff2"),
+  url(../fonts/DINPro-Regular.woff) format("woff"),
+  url(../fonts/DINPro-Regular.ttf) format("truetype"),
+  url(../fonts/DINPro-Regular.svg#DINPro-Regular) format("svg"),
+  url(../fonts/DINPro-Regular.eot?#iefix) format("embedded-opentype");
+  font-weight:400;
+  font-style:normal
+}
+@font-face {
+  font-family:DINPro-Medium;
+  src:url(../fonts/DINPro-Medium.eot);
+  src:url(../fonts/DINPro-Medium.woff2) format("woff2"),
+  url(../fonts/DINPro-Medium.woff) format("woff"),
+  url(../fonts/DINPro-Medium.ttf) format("truetype"),
+  url(../fonts/DINPro-Medium.svg#DINPro-Medium) format("svg"),
+  url(../fonts/DINPro-Medium.eot?#iefix) format("embedded-opentype");
+  font-weight:400;
+  font-style:normal
+}
+@font-face {
+  font-family:DINPro-Bold;
+  src:url(../fonts/DINPro-Bold.eot);
+  src:url(../fonts/DINPro-Bold.woff2) format("woff2"),
+  url(../fonts/DINPro-Bold.woff) format("woff"),
+  url(../fonts/DINPro-Bold.ttf) format("truetype"),
+  url(../fonts/DINPro-Bold.svg#DINPro-Bold) format("svg"),
+  url(../fonts/DINPro-Bold.eot?#iefix) format("embedded-opentype");
+  font-weight:400;
+  font-style:normal
+}
+@font-face {
+  font-family:DINPro-Black;
+  src:url(../fonts/DINPro-Black.eot);
+  src:url(../fonts/DINPro-Black.woff2) format("woff2"),
+  url(../fonts/DINPro-Black.woff) format("woff"),
+  url(../fonts/DINPro-Black.ttf) format("truetype"),
+  url(../fonts/DINPro-Black.svg#DINPro-Black) format("svg"),
+  url(../fonts/DINPro-Black.eot?#iefix) format("embedded-opentype");
+  font-weight:400;
+  font-style:normal
+}
+@font-face {
+  font-family:WalbaumBook-Regular;
+  src:url(../fonts/WalbaumBook-Regular.otf) format("opentype"),
+  url(../fonts/WalbaumBook-Regular.ttf) format("truetype"),
+  url(../fonts/WalbaumBook-Regular.woff) format("woff"),
+  url(../fonts/WalbaumBook-Regular.woff2) format("woff2"),
+  url(../fonts/WalbaumBook-Regular.svg) format("svg");
+  font-weight:400;
+  font-style:normal
+}
+@font-face {
+  font-family:WalbaumBook-Italic;
+  src:url(../fonts/WalbaumBook-Italic.otf) format("opentype"),
+  url(../fonts/WalbaumBook-Italic.ttf) format("truetype"),
+  url(../fonts/WalbaumBook-Italic.woff) format("woff"),
+  url(../fonts/WalbaumBook-Italic.woff2) format("woff2"),
+  url(../fonts/WalbaumBook-Italic.svg) format("svg");
+  font-weight:400;
+  font-style:normal
+}
+@font-face {
+  font-family:WalbaumBook-Medium;
+  src:url(../fonts/WalbaumBook-Medium.otf) format("opentype"),
+  url(../fonts/WalbaumBook-Medium.ttf) format("truetype"),
+  url(../fonts/WalbaumBook-Medium.woff) format("woff"),
+  url(../fonts/WalbaumBook-Medium.woff2) format("woff2"),
+  url(../fonts/WalbaumBook-Medium.svg) format("svg");
+  font-weight:400;
+  font-style:normal
+}
+
