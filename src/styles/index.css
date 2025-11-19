@@ -1,8 +1,8 @@
 @import "variables.css";
 
-body{
+body {
     font-family: "WalbaumBook", serif;
-    background-color: #eee;
+    background-color: var(--primary-color-fade);
     width: 100%;
     height: 100vh;
 }
