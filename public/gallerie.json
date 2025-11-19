@@ -1,4 +1,4 @@
 [
-  { "manifest": "https://neuma.huma-num.fr/rest/collections/all%3Acollabscore%3Aconcert%3AC045_0/_sources/sync/_file/", "image": "imgs/cimetiere.jpg", "label": "Au cimetière. Voix, piano. Op. 26, no 5" },
-  { "manifest": "https://neuma.huma-num.fr/rest/collections/all%3Acollabscore%3Aroyaumont%3Apelleas_2_1/_sources/sync/_file/", "image": "imgs/pellas.jpg", "label": "Péllas, Acte II, scène 1" }
+  { "manifest": "https://neuma.huma-num.fr/rest/collections/all%3Acollabscore%3Aconcert%3AC045_0/_sources/sync/_file/", "image": "imgs/cimetiere.jpg", "label": "Au cimetière. Voix, piano. Op. 26, no 5", "info": "infos/cimetiere.html" },
+  { "manifest": "https://neuma.huma-num.fr/rest/collections/all%3Acollabscore%3Aroyaumont%3Apelleas_2_1/_sources/sync/_file/", "image": "imgs/pellas.jpg", "label": "Péllas, Acte II, scène 1", "info": "infos/pellas.html" }
 ]

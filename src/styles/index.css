@@ -39,7 +39,7 @@ body{
     padding: 0;
     margin: 0;
     display: flex;
-    bottom: 1rem;
+    bottom: 10rem;
     background-color: rgba(100, 200, 0, 0.4);
     padding-right: 1rem;
     padding-bottom: 1rem;
@@ -96,6 +96,23 @@ body{
 .player{
     position: relative;
     z-index: 1;
+}
+.player h2{
+    display: block;
+    position: absolute;
+    opacity: 0.2;
+    color: beige;
+    z-index: 20;
+}
+.info-box{
+    position: absolute;
+    display: none;
+    z-index: 25;
+    color: beige;
+}
+.info-box.open{
+    display: block;
+    top: 4rem;
 }
 /****************************************/
 /****************************************/

@@ -27,6 +27,7 @@ export default function App() {
 
   return (
     <>
+      <div className='signature'></div>
       {!playing ? <div className='bt-play'>
         <button onClick={() => {
         ctlRef.current?.play()

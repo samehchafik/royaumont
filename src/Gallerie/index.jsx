@@ -4,6 +4,8 @@ import qs from 'query-string';
 export default function Gallerie({ manifest, url, onSelect }) {
   const [items, setItems] = useState([]);
   const [state, setState] = useState({ loading: true, error: null });
+  const [infoUrl, setInfoUrl] = useState("");
+  const [infoBox, setInfoBox] = useState("info-box");
 
   useEffect(() => {
     if (!url) return;
@@ -31,6 +33,7 @@ export default function Gallerie({ manifest, url, onSelect }) {
             manifestUrl: it.manifest,
             image: it.image,
             label: it.label,
+            info: it.info,
           }))
           .filter((it) => it.manifestUrl);
 
@@ -60,6 +63,8 @@ export default function Gallerie({ manifest, url, onSelect }) {
   if (state.error) return <div className="gallerie error">Erreur : {state.error}</div>;
   if (!items.length) return <div className="gallerie empty">Aucun élément</div>;
 
+  
+
   return (
     <div class='gallerie-contenaire'>
         <ul className="gallerie">
@@ -74,19 +79,22 @@ export default function Gallerie({ manifest, url, onSelect }) {
                     <img className="img" src={item.image} alt={item.label} loading="lazy" />
                 )}
                 <span className="label">{item.label}</span>
-                <span className='info'>i</span>
+               
                 </a> : <div>
                 {item.image && (
                     <img className="img" src={item.image} alt={item.label} loading="lazy" />
                 )}
                 <span className="label">{item.label}</span>
-                <span className='info'>i</span>
                 </div>}
+                 <button className='info' onClick={()=>{setInfoBox("info-box open"); setInfoUrl(item.info)} }>i</button>
             </li>
             );
         })}
         </ul>
-        <div class="info-box"></div>
+        <div className={infoBox}>
+            <button className='close' onClick={()=>{setInfoBox("info-box close")}}>x</button>
+            <iframe src={infoUrl} className='info-content'></iframe>
+        </div>
     </div>
   );
 }
