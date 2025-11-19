@@ -1,0 +1,175 @@
+body{
+    background-color: #eee;
+    width: 100%;
+    height: 100vh;
+}
+#root{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.atlas {
+    flex-direction: column;
+    position: relative !important;
+}
+.atlas-container, .atlas, .atlas-canvas, .atlas-overlay {
+    height: 90vh !important;
+}
+
+.atlas-overlay {
+    position: absolute !important;
+    overflow: hidden;
+}
+.atlas-overlay > div {
+    transform: none !important;
+    height: auto !important;
+    aspect-ratio: 16/9 !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+}
+#atlas-floating-ui {
+    margin-bottom: 4em;
+}
+
+.gallerie{
+    position: absolute;
+    z-index: 10;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    bottom: 1rem;
+    background-color: rgba(100, 200, 0, 0.4);
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;;
+}
+.gallerie .item{
+    width: 200px;
+    max-height: 150px;
+    margin-left: 1rem;
+   
+}
+.gallerie .item a{
+     position: relative;
+}
+.gallerie .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    display: block;
+    z-index: 1;
+}
+.gallerie .item .label{
+    position: absolute;
+    z-index: 2;
+    color: white;
+    height: 3rem;
+    display: block;
+    width: 100%;
+    top: 0;
+    background: linear-gradient(to top, transparent 0%, #000 100%);
+    line-height: 1.1rem;
+    font-size: 1.2rem;
+}
+.player{
+    position: relative;
+    z-index: 1;
+}
+/****************************************/
+/****************************************/
+
+/**
+* Dark mode support
+*/
+
+@media (prefers-color-scheme: dark) {
+
+}
+
+
+/****************************************/
+/*			Responsive breaking points			*/
+/****************************************/
+
+/**
+* wide Screen
+*/
+@media only screen and (min-width: 1600px) {
+    .atlas-overlay > div {
+        width: 35% !important;
+    }
+}
+
+@media only screen and (max-width: 1599px) {
+    .atlas-overlay > div {
+        width: 45% !important;
+    }
+}
+
+/**
+* computer
+*/
+
+@media only screen and (max-width: 1199px) {
+    .atlas-overlay > div {
+        width: 55% !important;
+    }
+}
+
+/**
+* Small computer, Tablet landscape
+*/
+
+@media only screen and (max-width: 1024px) {
+       .atlas-overlay > div {
+        width: 65% !important;
+    }
+}
+
+
+/**
+* Tablet portrait
+*/
+
+@media only screen and (max-width: 768px) {
+.atlas-overlay > div {
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16/9 !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+}
+}
+
+/**
+* Phone landscape ONLY
+*/
+
+@media only screen and (max-width: 850px) and (orientation:landscape) {
+
+}
+
+/**
+*    Phones
+*/
+
+@media screen and (max-width: 500px) {
+
+}
+
+@media only screen and (max-width: 421px) {
+
+}
+
+.actions.hide{
+    display: none;
+}
+
+.controls{
+    margin-bottom: 3rem;;
+}
