@@ -5,6 +5,10 @@
   --ternary-color: #4e56e4;
   --dark-layer: rgba(26, 26, 26, 0.7);
   --text: #222;
+
+  --controls-height: 50px;
+  --gallery-height: 190px;
+  --gallery-padding: 20px;
 }
 
 @font-face {
