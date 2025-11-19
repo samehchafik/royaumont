@@ -66,7 +66,7 @@ export default function Gallerie({ manifest, url, onSelect }) {
   
 
   return (
-    <div class='gallerie-contenaire'>
+    <div className='gallerie-contenaire'>
         <ul className="gallerie">
         {items.map((item) => {
             const href = `#manifest=${item.manifestUrl}&gallerie=${url}`;
