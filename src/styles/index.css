@@ -3,20 +3,29 @@
 body {
     font-family: "WalbaumBook", serif;
     background-color: var(--primary-color-fade);
-    width: 100%;
+    width: 100vw;
     height: 100vh;
+    padding: 0 !important;
 }
 #root{
     position: absolute;
     width: 100%;
     height: 100%;
 }
+.appWrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+}
+
+
 .atlas {
     flex-direction: column;
     position: relative !important;
 }
 .atlas-container, .atlas, .atlas-canvas, .atlas-overlay {
-    height: 90vh !important;
+    height: calc(90vh - 150px) !important;
 }
 
 .atlas-overlay {
@@ -35,34 +44,40 @@ body {
     margin-bottom: 4em;
 }
 
+.gallerie-container {
+    order: 2;
+}
+
 .gallerie{
-    position: absolute;
-    z-index: 10;
     list-style: none;
+    width: 100%;
     padding: 0;
     margin: 0;
     display: flex;
-    bottom: 10rem;
-    background-color: rgba(100, 200, 0, 0.4);
-    padding-right: 1rem;
-    padding-bottom: 1rem;
-    padding-top: 1rem;;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 20px;
+    overflow-x: auto;
+    flex-grow: 0;
 }
 .gallerie .item{
     width: 200px;
-    max-height: 150px;
-    margin-left: 1rem;
-   
+    height: 150px;
+    position: relative;
+    flex-shrink: 0;
 }
 .gallerie .item a, 
-.gallerie .item div{
-     position: relative;
+.gallerie .item div {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 .gallerie .item img{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    position: relative;
+    position: absolute;
     display: block;
     z-index: 1;
 }
@@ -70,17 +85,32 @@ body {
     position: absolute;
     z-index: 2;
     color: white;
-    height: 3rem;
+    height: auto;
     display: block;
     width: 100%;
     top: 0;
     background: linear-gradient(to top, transparent 0%, #000 100%);
-    line-height: 1.1rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.4rem;
+    padding: 0.5em;
 }
 .gallerie span {
     display: block;
 }
+.gallerie .info {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    z-index: 10;
+    background-color: var(--dark-layer);
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+}
+
+
+
+
+
 .bt-play{
     z-index: 11;
     position: absolute;
@@ -99,27 +129,104 @@ body {
 .bt-play.hide{
     display: none
 }
-.player{
+
+
+
+.player {
     position: relative;
     z-index: 1;
+    order: 1;
+    flex-grow: 1;
+    width: 100%;
 }
 .player h2{
     display: block;
     position: absolute;
-    opacity: 0.2;
+    opacity: 0.4;
     color: beige;
     z-index: 20;
 }
-.info-box{
-    position: absolute;
+
+.controls {
+    height: 40px;
+    margin-bottom: 0 !important;
+}
+#atlas-floating-ui {
+    display: none;
+}
+
+/**
+* info-box
+*/
+.info-box {
+    --info-margin: 150px;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: var(--dark-layer);
     display: none;
     z-index: 25;
     color: beige;
 }
 .info-box.open{
     display: block;
-    top: 4rem;
 }
+.info-content {
+    position: absolute;
+    top: var(--info-margin);
+    left: var(--info-margin);
+    border: 0;
+    overflow-y: auto;
+    width: calc(100% - var(--info-margin) * 2);
+    height: calc(100% - var(--info-margin) * 2);
+}
+.info-box .close {
+    display: block;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    position: absolute;
+    bottom: calc(var(--info-margin) - 4em);
+    left:  calc(var(--info-margin));
+    color: var(--text);
+    background-color: var(--primary-color-fade);
+}
+
+
+/**
+* Signature screen
+*/
+
+.signature {
+/*     display: none; */
+    position: fixed;
+    width: 100vw;
+    height: 100%;
+    Overflow: hidden;
+    z-index: 200;
+    background-color: var(--primary-color-fade);
+    background-image: url(/imgs/logo-bibliotheques-royaumont-white.svg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 30vw;
+    animation: fadeout 2s ease-in forwards;
+}
+@keyframes fadeout {
+    55% {
+		opacity: 1;
+	}
+    99% {
+		opacity: 0;
+        height: 100%;
+	}
+    100% {
+        opacity: 0;
+        height: 0;
+	}
+}
+
+
+
 /****************************************/
 /****************************************/
 

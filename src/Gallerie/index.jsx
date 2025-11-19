@@ -66,7 +66,7 @@ export default function Gallerie({ manifest, url, onSelect }) {
   
 
   return (
-    <div className='gallerie-contenaire'>
+    <div className='gallerie-container'>
         <ul className="gallerie">
         {items.map((item) => {
             const href = `#manifest=${item.manifestUrl}&gallerie=${url}`;
@@ -92,7 +92,7 @@ export default function Gallerie({ manifest, url, onSelect }) {
         })}
         </ul>
         <div className={infoBox}>
-            <button className='close' onClick={()=>{setInfoBox("info-box close")}}>x</button>
+            <button className='close' onClick={()=>{setInfoBox("info-box close")}}>×</button>
             <iframe src={infoUrl} className='info-content'></iframe>
         </div>
     </div>

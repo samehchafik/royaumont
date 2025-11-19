@@ -41,10 +41,9 @@ export default function App() {
         setTimeout(()=>{ctlRef.current?.play()}, 200);
       }}>Play</button> 
       </div>
+      <div className="appWrap">
       {gallerie ? (
-        <div>
           <Gallerie manifest={manifestUrl} url={gallerie} />
-        </div>
       ) : null}
       <div className='player'>
         <Player
@@ -53,6 +52,7 @@ export default function App() {
           onPlay={handlePlay}
           onPause={handlePause}
         />
+      </div>
       </div>
     </>
   );

@@ -1,9 +1,11 @@
-
---primary-color: #a49c89;
---primary-color-fade: #c6beaa;
---secondary-color: #cc1900;
---ternary-color: #4e56e4;
-
+:root {
+  --primary-color: #a49c89;
+  --primary-color-fade: #c6beaa;
+  --secondary-color: #cc1900;
+  --ternary-color: #4e56e4;
+  --dark-layer: rgba(26, 26, 26, 0.7);
+  --text: #222;
+}
 
 @font-face {
   font-family: "DINPro";
