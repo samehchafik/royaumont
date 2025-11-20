@@ -103,6 +103,10 @@ body {
     background-color: var(--dark-layer);
     border-radius: 50%;
     aspect-ratio: 1/1;
+    color: white;
+    font-size: 1.5em;
+    padding: 0.5em;
+    line-height: 0;
 }
 
 
@@ -144,10 +148,11 @@ button {
     position: absolute;
     top: 20px;
     left: 20px;
-    opacity: 0.4;
+    opacity: 0.6;
     color: beige;
     z-index: 20;
     margin: 0;
+    text-shadow: 0 0 5px black;
 }
 
 .controls {
@@ -189,16 +194,22 @@ button {
     overflow-y: auto;
     width: calc(100% - var(--info-margin) * 2);
     height: calc(100% - var(--info-margin) * 2);
+    background-color: var(--primary-color-fade);
+    padding: 3em 5em;
 }
 .info-box .close {
     display: block;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     position: absolute;
-    bottom: calc(var(--info-margin) - 4em);
+    font-size: 1.5em;
+    padding: 0.5em;
+    line-height: 0;
+    bottom: calc(var(--info-margin) - 2.5em);
     left:  calc(var(--info-margin));
     color: var(--text);
-    background-color: var(--primary-color-fade);
+    background-color: var(--secondary-color);
+    color: white;
 }
 
 
