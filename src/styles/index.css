@@ -58,12 +58,19 @@ body {
     overflow-x: auto;
     flex-grow: 0;
 }
-.gallerie .item{
+.gallerie .item {
     width: 200px;
     height: calc(var(--gallery-height) -  var(--gallery-padding) * 2);
     position: relative;
     flex-shrink: 0;
 }
+.gallerie .item.active, .gallerie .item.active:hover {
+    box-shadow: 0 0 0 7px var(--primary-color);
+}
+.gallerie .item:hover {
+    box-shadow: 0 0 0 7px var(--ternary-color);
+}
+
 .gallerie .item a, 
 .gallerie .item div {
     display: block;
@@ -107,6 +114,7 @@ body {
     font-size: 1.5em;
     padding: 0.5em;
     line-height: 0;
+    text-transform: none;
 }
 
 
@@ -115,7 +123,7 @@ button {
     text-transform: capitalize;
 }
 
-.bt-play{
+.bt-play {
     z-index: 11;
     position: absolute;
     margin: auto;
@@ -166,6 +174,16 @@ button {
     margin-bottom: 0em;
     align-items: center;
 }
+
+
+/**
+* hacks player
+*/
+.controls > div > div:nth-child(2) {
+    background: var(--ternary-color) !important;
+}
+
+
 
 /**
 * info-box
