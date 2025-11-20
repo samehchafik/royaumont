@@ -243,7 +243,7 @@ button {
     Overflow: hidden;
     z-index: 200;
     background-color: var(--primary-color-fade);
-    background-image: url(/imgs/logo-bibliotheques-royaumont-white.svg);
+    background-image: url(imgs/logo-bibliotheques-royaumont-white.svg);
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: 30vw;
