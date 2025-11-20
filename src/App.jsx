@@ -17,7 +17,8 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
-  const [playing, setPlaying] = useState("bt-play");
+  const [btPlaying, setBtPlaying] = useState("bt-play");
+  const [contenaireClass, setContenaireClass] = useState("player-contenaire");
 
   const { manifest, gallerie } = query;
 
@@ -27,32 +28,36 @@ export default function App() {
 
 
   const handleControlsReady = useCallback((api) => { ctlRef.current = api; }, []);
-  const handlePlay         = useCallback(() => {console.log("play"); setPlaying('bt-play hide')}, []);
-  const handlePause        = useCallback(() => {console.log("pause");setPlaying('bt-play')}, []);
+  const handlePlay         = useCallback(() => {console.log("play"); setBtPlaying('bt-play hide'); setContenaireClass("player-contenaire playing")}, []);
+  const handlePause        = useCallback(() => {console.log("pause", ctlRef);setBtPlaying('bt-play'); setContenaireClass("player-contenaire")}, []);
+
+  const handleIsPlaying        = useCallback(() => {console.log("isPlaying");}, []);
 
 
   return (
     <>
       <div className='signature'></div>
-      <div className={playing}>
-        <button onClick={() => {
-        ctlRef.current?.play();
-        setPlaying('bt-play hide')
-        setTimeout(()=>{ctlRef.current?.play()}, 200);
-      }}>Play</button> 
-      </div>
-      <div className="appWrap">
-      {gallerie ? (
-          <Gallerie manifest={manifestUrl} url={gallerie} />
-      ) : null}
-      <div className='player'>
-        <Player
-          manifest={manifestUrl}
-          onControlsReady={handleControlsReady}
-          onPlay={handlePlay}
-          onPause={handlePause}
-        />
-      </div>
+      <div className={ contenaireClass}>
+        <div className={btPlaying}>
+          <button onClick={() => {
+          ctlRef.current?.play();
+          //setBtPlaying('bt-play hide')
+          setTimeout(()=>{ctlRef.current?.play()}, 200);
+        }}>Play</button> 
+        </div>
+        <div className="appWrap">
+          {gallerie ? (
+              <Gallerie manifest={manifestUrl} url={gallerie} />
+          ) : null}
+          <div className='player'>
+            <Player
+              manifest={manifestUrl}
+              onControlsReady={handleControlsReady}
+              onPlay={handlePlay}
+              onPause={handlePause}
+            />
+          </div>
+        </div>
       </div>
     </>
   );
