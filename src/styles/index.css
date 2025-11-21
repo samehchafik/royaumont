@@ -200,6 +200,11 @@ button:focus {
     padding: 0 20px;
     gap: 10px;
     background-color: var(--primary-color-light);
+    transition: all 1s ease-out;
+}
+.playing .controls {
+    background-color: var(--primary-color-dark);
+    color: white;
 }
 #atlas-floating-ui {
     display: none;
