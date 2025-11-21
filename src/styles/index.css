@@ -63,6 +63,11 @@ body {
     height: calc(var(--gallery-height) -  var(--gallery-padding) * 2);
     position: relative;
     flex-shrink: 0;
+    background-color: var(--primary-color);
+    background-image: url(imgs/sound-wave.png);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 50%;
 }
 .gallerie .item.active, .gallerie .item.active:hover {
     box-shadow: 0 0 0 7px var(--primary-color);
