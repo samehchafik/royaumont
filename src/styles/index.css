@@ -1,6 +1,10 @@
 @import "variables.css";
 
+html {
+    width: 100%;
+}
 body {
+    width: 100%;
     font-family: "WalbaumBook", serif;
     background-color: var(--primary-color-fade);
     width: 100vw;
@@ -24,8 +28,14 @@ body {
     flex-direction: column;
     position: relative !important;
 }
+.atlas-container {
+    transition: height 1s ease-out;
+}
 .atlas-container, .atlas, .atlas-canvas, .atlas-overlay {
     height: calc(100vh - var(--controls-height) - var(--gallery-height)) !important;
+}
+.playing .atlas-container, .playing .atlas, .playing .atlas-canvas, .playing .atlas-overlay {
+    height: calc(100vh - var(--controls-height)) !important;
 }
 
 .atlas-overlay {
@@ -145,6 +155,10 @@ button:focus {
     left: 0;
     transform: translateY(-50%);
 }
+.playing .btn-play {
+    top: calc(100vh - var(--controls-height) / 2);
+}
+
 .bt-play button { 
     width: 100%;
     height: 100%;
