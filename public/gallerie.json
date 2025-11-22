@@ -1,8 +1,8 @@
 [
-  { "manifest": "https://neuma.huma-num.fr/rest/collections/all%3Acollabscore%3Aroyaumont%3Apelleas_2_1/_sources/sync/_file/", "image": "imgs/pellas.jpg", "label": "Pelléas, Acte II, scène 1, Claude Debussy", "info": "infos/pelleas.html" },
-  { "manifest": "https://neuma.huma-num.fr/rest/collections/all%3Acollabscore%3Aconcert%3AC045_0/_sources/sync/_file/", "image": "imgs/cimetiere.jpg", "label": "Au cimetière. Voix, piano. Op. 26, no 5", "info": "infos/cimetiere.html" },
-  { "manifest": "https://neuma.huma-num.fr/rest/collections/all%3Acollabscore%3Aconcert%3AC144_0/_sources/sync/_file/", "image": "imgs/reverie.jpg", "label": "Réverie", "info": "infos/reverie.html" },
-  { "manifest": "https://neuma.huma-num.fr/rest/collections/all%3Acollabscore%3Aconcert%3AC130_0/_sources/sync/_file/", "image": "imgs/tristesse.jpg", "label": "Tristesse", "info": "infos/tristesse.html" },
+  { "manifest": "https://neuma.huma-num.fr/rest/collections/all%3Acollabscore%3Aroyaumont%3Apelleas_2_1/_sources/sync/_file/", "image": "imgs/pellas.jpg", "label": "Pelléas, Acte II, scène 1 - Claude Debussy", "info": "infos/pelleas.html" },
+  { "manifest": "https://neuma.huma-num.fr/rest/collections/all%3Acollabscore%3Aconcert%3AC045_0/_sources/sync/_file/", "image": "imgs/cimetiere.jpg", "label": "Au cimetière. Voix, piano. Op. 26, no 5 - Camille Saint-Saëns ", "info": "infos/cimetiere.html" },
+  { "manifest": "https://neuma.huma-num.fr/rest/collections/all%3Acollabscore%3Aconcert%3AC144_0/_sources/sync/_file/", "image": "imgs/reverie.jpg", "label": "Réverie - Camille Saint-Saëns ", "info": "infos/reverie.html" },
+  { "manifest": "https://neuma.huma-num.fr/rest/collections/all%3Acollabscore%3Aconcert%3AC130_0/_sources/sync/_file/", "image": "imgs/tristesse.jpg", "label": "Tristesse - Camille Saint-Saëns ", "info": "infos/tristesse.html" },
   { "manifest": "https://neuma.huma-num.fr/rest/collections/all%3Acollabscore%3Asaintsaens-audio%3AC055_0/_sources/sync/_file/", "image": "imgs/aimons-nous.webp", "label": "Aimons - Nous", "info": "infos/aimon-nous.html" },
   { "manifest": "https://neuma.huma-num.fr/rest/collections/all%3Acollabscore%3Asaintsaens-audio%3Aasciano/_sources/sync/_file/", "image": "imgs/asciano.jpg", "label": "Asciano, air de Scozzone", "info": "infos/asciano.html" }
 ]
