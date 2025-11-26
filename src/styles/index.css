@@ -294,6 +294,9 @@ input[type="range"] {
     background-size: 30vw;
     animation: fadeout 2s ease-in forwards;
 }
+.metadata{
+    display: none;
+}
 @keyframes fadeout {
     55% {
 		opacity: 1;
