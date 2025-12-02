@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import {useState } from 'react';
 import qs from 'query-string';
 
 export default function Gallerie({ manifest, items, onSelect }) {
