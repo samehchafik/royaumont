@@ -84,7 +84,7 @@ export default function App() {
     if(autoPlay){
       setTimeout(()=>{
         ctlRef.current?.play();
-      }, 200);
+      }, 1000);
     }
   }
 
