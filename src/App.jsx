@@ -84,11 +84,11 @@ export default function App() {
       { manifest ? 
         (<div className={ contenaireClass}>
           <div className={btPlaying}>
-            <button onClick={() => {
+            {(<button onClick={() => {
             ctlRef.current?.play();
             //setBtPlaying('bt-play hide')
             setTimeout(()=>{ctlRef.current?.play()}, 200);
-          }}>Play</button> 
+          }}>Play</button>)}
           </div>
           <div className="appWrap">
             {collection ? (
