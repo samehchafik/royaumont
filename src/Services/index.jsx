@@ -1,38 +1,43 @@
 const getMetainfo = async (url) => {
 
-    const res = await fetch(url, {
-        headers: { Accept: 'application/json' },
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-    const json = await res.json();
-
     const index = {}
+    try{ 
+        const res = await fetch(url, {
+            headers: { Accept: 'application/json' },
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
-    if(json.metadata){
-        for(const md of json.metadata){
-            if (md.label && md.value) {
-                index[md.label.fr[0].toLowerCase()] = md.value.fr[0];
+        const json = await res.json();
+
+        
+
+        if(json.metadata){
+            for(const md of json.metadata){
+                if (md.label && md.value) {
+                    index[md.label.fr[0].toLowerCase()] = md.value.fr[0];
+                }
             }
         }
-    }
-    if(json.summary){
-        index.summary = json.summary.fr[0];
-    }
-
-    if(json.requiredStatement){
-        for(const h in json.requiredStatement){
-            if(h.toLowerCase() === 'value'){
-                index['copyright'] = json.requiredStatement[h].fr[0]
-            }
-            
+        if(json.summary){
+            index.summary = json.summary.fr[0];
         }
-    }
 
-    if(json.thumbnail){
-        index['image'] = json.thumbnail[0].id
-    }
+        if(json.requiredStatement){
+            for(const h in json.requiredStatement){
+                if(h.toLowerCase() === 'value'){
+                    index['copyright'] = json.requiredStatement[h].fr[0]
+                }
+                
+            }
+        }
 
+        if(json.thumbnail){
+            index['image'] = json.thumbnail[0].id
+        }
+
+    } catch(e){
+        console.error("Erreur lors du chargement des métadonnées :", e);
+    }
     return index
 }
 
