@@ -16,6 +16,9 @@ const manifestResolver = async ()=>{
   if(!collection){
     collection = document.getElementById('root').dataset.collection;
   }
+  if(!manifest){
+    collection = document.getElementById('root').dataset.collection;
+  }
 
   collection = await collectionLoader(collection);
 
@@ -90,6 +93,7 @@ export default function App() {
 
   return (
     <>
+    
       <div className='signature' style={style}></div>
       
       { manifest ? 
