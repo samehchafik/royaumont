@@ -98,7 +98,7 @@ export const collectionLoader = async (url) => {
     for(const item of json.items){
         const info = await getMetainfo(item.id)
         const gallerie = {
-            manifest: item.id,
+            manifest: item.id.replace("http://","https://"),
             image: item.thumbnail ? item.thumbnail[0].id : null,
             label: item.label ? item.label.fr[0] : null,
             info: info
