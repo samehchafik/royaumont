@@ -91,6 +91,9 @@ export default function App() {
   return (
     <>
       <div className='signature' style={style}></div>
+      <div class="home-button">
+        <button onClick={()=>onSelect(undefined)}>Home</button>
+      </div>
       { manifest ? 
         (<div className={ contenaireClass}>
           <div className={btPlaying}>
