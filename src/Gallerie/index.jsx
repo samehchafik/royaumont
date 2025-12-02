@@ -53,15 +53,16 @@ export default function Gallerie({ manifest, items, onSelect }) {
             <button className='close' onClick={()=>{setInfoBox("info-box close")}}>×</button>
             <div className='card-container'>
               <div class="card">
-                <img src={info.image} alt={info.title} />
+                {info.image && (<img src={info.image} alt={info.title} />)}
                 <div class="content">
                   <div class="meta"></div>
-                  <h1>{info.title}</h1>
-                  <h2>{info.creator}</h2>
+                   {info.title && (<h1>{info.title}</h1>)}
+                  {info.creator && (<h2>{info.creator}</h2>)}
                   <p>
                     {info.summary}
                   </p>
-                  <p class="copyright">{info.copyright}</p>
+                  {info.copyright && (<p class="copyright">{info.copyright}</p>)}
+                  
                 </div>
               </div>
             </div>
