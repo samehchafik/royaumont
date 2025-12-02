@@ -1,52 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import qs from 'query-string';
 
-export default function Gallerie({ manifest, url, onSelect }) {
-  const [items, setItems] = useState([]);
-  const [state, setState] = useState({ loading: true, error: null });
+export default function Gallerie({ manifest, items, onSelect }) {
   const [infoUrl, setInfoUrl] = useState("");
   const [infoBox, setInfoBox] = useState("info-box");
 
-  useEffect(() => {
-    if (!url) return;
-    const ac = new AbortController();
-
-    (async () => {
-      try {
-        setState({ loading: true, error: null });
-
-        const res = await fetch(url, {
-          signal: ac.signal,
-          headers: { Accept: 'application/json' },
-        });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-        const json = await res.json();
-
-        // Accepte soit un tableau, soit un objet { items: [...] }
-        let list = Array.isArray(json) ? json : (json.items || json.data || []);
-
-        // Normalisation douce
-        list = list
-          .map((it, idx) => ({
-            id: `item-${idx}`,
-            manifestUrl: it.manifest,
-            image: it.image,
-            label: it.label,
-            info: it.info,
-          }))
-          .filter((it) => it.manifestUrl);
-
-        setItems(list);
-        setState({ loading: false, error: null });
-      } catch (err) {
-        if (ac.signal.aborted) return;
-        setState({ loading: false, error: err.message || String(err) });
-      }
-    })();
-
-    return () => ac.abort();
-  }, [url]);
+  
 
   const handleClick = (manifestUrl) => (e) => {
     e.preventDefault();
@@ -58,23 +17,19 @@ export default function Gallerie({ manifest, url, onSelect }) {
     window.location.hash = qs.stringify(next);
   };
 
-  if (!url) return null;
-  if (state.loading) return <div className="gallerie loading">Chargement…</div>;
-  if (state.error) return <div className="gallerie error">Erreur : {state.error}</div>;
-  if (!items.length) return <div className="gallerie empty">Aucun élément</div>;
+  if (!items || !items.length) return <div className="gallerie empty">Aucun élément</div>;
 
   
-
   return (
     <div className='gallerie-container'>
         <ul className="gallerie">
         {items.map((item) => {
-            const href = `#manifest=${item.manifestUrl}&gallerie=${url}`;
+            const href = `#manifest=${item.manifest}`;
 
             return (
-            <li key={item.id} className={`item${manifest !== item.manifestUrl?'':' active'}`}>
-            { manifest !== item.manifestUrl ? 
-                <a href={href} onClick={handleClick(item.manifestUrl)}>
+            <li key={item.id} className={`item${manifest !== item.manifest?'':' active'}`}>
+            { manifest !== item.manifest ? 
+                <a href={href} onClick={handleClick(item.manifest)}>
                 {item.image && (
                     <img className="img" src={item.image} alt={item.label} loading="lazy" />
                 )}

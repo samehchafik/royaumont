@@ -4,23 +4,61 @@ import qs from 'query-string';
 
 
 import Player from './Player';
+import Index from './Index';
 import Gallerie from './Gallerie';
+import { collectionLoader } from './Services';
 
 import './styles/index.css'
 
+const manifestResolver = async ()=>{
+  let { manifest, collection } = qs.parse(window.location.hash.slice(1));
+
+  if(!collection){
+    collection = document.getElementById('root').dataset.collection;
+  }
+
+  collection = await collectionLoader(collection);
+
+  return { manifest, collection };
+}
 
 export default function App() {
-  const [query, setQuery] = useState(() => qs.parse(window.location.hash.slice(1))); // <- plus de types
+  const [collection, setCollection] = useState(null);
+  const [manifest, setManifest] = useState(null);
+
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    const onHashChange = () => setQuery(qs.parse(window.location.hash.slice(1)));
+    let cancelled = false;
+
+    const loadFromHash = async () => {
+      setLoading(true);
+      const result = await manifestResolver();
+      if (!cancelled) {
+        setCollection(result.collection);
+        setManifest(result.manifest || null);
+        setLoading(false);
+      }
+    };
+
+    // 1. chargement initial
+    loadFromHash();
+
+    // 2. recharger quand le hash change
+    const onHashChange = () => {
+      loadFromHash();
+    };
+
     window.addEventListener('hashchange', onHashChange);
-    return () => window.removeEventListener('hashchange', onHashChange);
+    return () => {
+      cancelled = true;
+      window.removeEventListener('hashchange', onHashChange);
+    };
   }, []);
+
 
   const [btPlaying, setBtPlaying] = useState("bt-play");
   const [contenaireClass, setContenaireClass] = useState("player-contenaire");
-
-  const { manifest, gallerie } = query;
 
   const ctlRef = useRef(null);
 
@@ -33,32 +71,40 @@ export default function App() {
 
   const handleIsPlaying        = useCallback(() => {console.log("isPlaying");}, []);
 
-
+  if (loading) {
+    return <div>Chargement…</div>;
+  }
+  const style = {}
+  if(collection.provider.logo){
+    style.backgroundImage = `url(${collection.provider.logo})`;
+  }
   return (
     <>
-      <div className='signature'></div>
-      <div className={ contenaireClass}>
-        <div className={btPlaying}>
-          <button onClick={() => {
-          ctlRef.current?.play();
-          //setBtPlaying('bt-play hide')
-          setTimeout(()=>{ctlRef.current?.play()}, 200);
-        }}>Play</button> 
-        </div>
-        <div className="appWrap">
-          {gallerie ? (
-              <Gallerie manifest={manifestUrl} url={gallerie} />
-          ) : null}
-          <div className='player'>
-            <Player
-              manifest={manifestUrl}
-              onControlsReady={handleControlsReady}
-              onPlay={handlePlay}
-              onPause={handlePause}
-            />
+      <div className='signature' style={style}></div>
+      { manifest ? 
+        (<div className={ contenaireClass}>
+          <div className={btPlaying}>
+            <button onClick={() => {
+            ctlRef.current?.play();
+            //setBtPlaying('bt-play hide')
+            setTimeout(()=>{ctlRef.current?.play()}, 200);
+          }}>Play</button> 
           </div>
-        </div>
-      </div>
+          <div className="appWrap">
+            {collection ? (
+                <Gallerie manifest={manifestUrl} items={collection.galleries} onSelect={setManifest}/>
+            ) : null}
+            <div className='player'>
+              <Player
+                manifest={manifestUrl}
+                onControlsReady={handleControlsReady}
+                onPlay={handlePlay}
+                onPause={handlePause}
+              />
+            </div>
+          </div>
+        </div>) : (<div className={ contenaireClass}><Index collection={collection} onSelect={setManifest}/></div>)
+      }
     </>
   );
 }
