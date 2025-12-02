@@ -78,6 +78,16 @@ export default function App() {
   if(collection.provider.logo){
     style.backgroundImage = `url(${collection.provider.logo})`;
   }
+
+  const onSelect = (manifestUrl, autoPlay=false) => {
+    setManifest(manifestUrl);
+    if(autoPlay){
+      setTimeout(()=>{
+        ctlRef.current?.play();
+      }, 200);
+    }
+  }
+
   return (
     <>
       <div className='signature' style={style}></div>
@@ -92,7 +102,7 @@ export default function App() {
           </div>
           <div className="appWrap">
             {collection ? (
-                <Gallerie manifest={manifestUrl} items={collection.galleries} onSelect={setManifest}/>
+                <Gallerie manifest={manifestUrl} items={collection.galleries} onSelect={onSelect}/>
             ) : null}
             <div className='player'>
               <Player
@@ -103,7 +113,7 @@ export default function App() {
               />
             </div>
           </div>
-        </div>) : (<div className={ contenaireClass}><Index collection={collection} onSelect={setManifest}/></div>)
+        </div>) : (<div className={ contenaireClass}><Index collection={collection} onSelect={onSelect}/></div>)
       }
     </>
   );

@@ -6,7 +6,7 @@ export default function Index({ collection, onSelect }) {
         
         <div className='card-container'>
             <div className="bt-play">
-                <button onClick={()=>onSelect(collection.galleries[0].manifest)}>Play</button>)
+                <button onClick={()=>onSelect(collection.galleries[0].manifest, true)}>Play</button>)
             </div>
             <div class="card">
             <img src={collection.index.image} alt={collection.index.title} />
