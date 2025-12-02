@@ -429,11 +429,12 @@ input[type="range"] {
     max-width: 480px;
     margin: 0 auto;
     background: #1b1b1b;
-    border-radius: 12px;
+    border-radius: 1rem;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    color: white
+    color: white;
+    padding:0;
 }
 .card   a{
     color: inherit;
@@ -444,6 +445,8 @@ input[type="range"] {
     display: block;
     height: auto;
     object-fit: cover;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
 }
 
 .content {
