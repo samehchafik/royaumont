@@ -60,6 +60,7 @@ export default function Gallerie({ manifest, items, onSelect }) {
                   <p>
                     {info.summary}
                   </p>
+                  <p class="copyright">{info.copyright}</p>
                 </div>
               </div>
             </div>

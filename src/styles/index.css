@@ -482,14 +482,13 @@ input[type="range"] {
     margin-bottom: 6px;
 }
 
-.tag {
+.card .copyright {
     display: inline-block;
     margin-top: 6px;
     padding: 3px 8px;
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     font-size: 0.7rem;
-    text-transform: uppercase;
     letter-spacing: 0.08em;
     color: #e5e5e5;
 }
