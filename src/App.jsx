@@ -45,15 +45,15 @@ export default function App() {
     loadFromHash();
 
     // 2. recharger quand le hash change
-    const onHashChange = () => {
+    /*const onHashChange = () => {
       loadFromHash();
-    };
+    }
 
     window.addEventListener('hashchange', onHashChange);
     return () => {
       cancelled = true;
       window.removeEventListener('hashchange', onHashChange);
-    };
+    };*/
   }, []);
 
 

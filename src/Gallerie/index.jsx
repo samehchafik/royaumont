@@ -9,6 +9,7 @@ export default function Gallerie({ manifest, items, onSelect }) {
 
   const handleClick = (manifestUrl) => (e) => {
     e.preventDefault();
+    window.location.hash = `manifer=${manifestUrl}`
     if (onSelect) return onSelect(manifestUrl);
 
     // Par défaut: on met juste à jour le hash `manifest=...` et on garde le reste
