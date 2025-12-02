@@ -166,8 +166,9 @@ button:focus {
     margin: auto;
     width: 100px;
     height: 50px;
-    top: 20px ;
-    left: 20px;
+    top: 0;
+    right: 20px ;
+    
 }
 .playing .btn-play {
     top: calc(100vh - var(--controls-height) / 2);
