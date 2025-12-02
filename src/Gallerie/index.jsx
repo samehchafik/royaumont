@@ -2,7 +2,7 @@ import {useState } from 'react';
 import qs from 'query-string';
 
 export default function Gallerie({ manifest, items, onSelect }) {
-  const [infoUrl, setInfoUrl] = useState("");
+  const [info, setInfo] = useState({});
   const [infoBox, setInfoBox] = useState("info-box");
 
   
@@ -41,14 +41,28 @@ export default function Gallerie({ manifest, items, onSelect }) {
                 )}
                 <span className="label">{item.label}</span>
                 </div>}
-                 <button className='info' onClick={()=>{setInfoBox("info-box open"); setInfoUrl(item.info)} }>i</button>
+                 <button className='info' onClick={()=>{
+                  setInfoBox("info-box open"); setInfo(item.info)} 
+                }>i</button>
             </li>
             );
         })}
         </ul>
         <div className={infoBox}>
             <button className='close' onClick={()=>{setInfoBox("info-box close")}}>×</button>
-            <iframe src={infoUrl} className='info-content'></iframe>
+            <div className='card-container'>
+              <div class="card">
+                <img src={info.image} alt={info.title} />
+                <div class="content">
+                  <div class="meta"></div>
+                  <h1>{info.title}</h1>
+                  <h2>{info.creator}</h2>
+                  <p>
+                    {info.summary}
+                  </p>
+                </div>
+              </div>
+            </div>
         </div>
     </div>
   );
