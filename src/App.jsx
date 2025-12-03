@@ -88,6 +88,8 @@ export default function App() {
       setTimeout(()=>{
         ctlRef.current?.play();
       }, 1000);
+    } else if(manifestUrl === undefined){
+      document.location.hash = '';
     }
   }
 
