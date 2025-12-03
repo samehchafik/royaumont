@@ -50,10 +50,10 @@ export default function Gallerie({ manifest, items, onSelect }) {
         })}
         </ul>
         { infoBox === "info-box open" &&
-        <div className={infoBox} onClick={() => {setInfoBox("info-box");}}>
+        <div className={infoBox} >
             <button className='close' onClick={()=>{setInfoBox("info-box")}}>×</button>
-            <div className='card-container'onClick={(e) => {e.stopPropagation();}}>
-              <div class="card">
+            <div className='card-container' onClick={() => {setInfoBox("info-box");}}>
+              <div class="card" onClick={(e) => {e.stopPropagation();}}>
                 {info.image && (<img src={info.image} alt={info.title} />)}
                 <div class="content">
                   <div class="meta"></div>
