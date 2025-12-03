@@ -49,8 +49,9 @@ export default function Gallerie({ manifest, items, onSelect }) {
             );
         })}
         </ul>
-        <div className={infoBox} onClick={() => {setInfoBox("info-box close");}}>
-            <button className='close' onClick={()=>{setInfoBox("info-box close")}}>×</button>
+        { infoBox === "info-box open" &&
+        <div className={infoBox} onClick={() => {setInfoBox("info-box");}}>
+            <button className='close' onClick={()=>{setInfoBox("info-box")}}>×</button>
             <div className='card-container'onClick={(e) => {e.stopPropagation();}}>
               <div class="card">
                 {info.image && (<img src={info.image} alt={info.title} />)}
@@ -66,6 +67,7 @@ export default function Gallerie({ manifest, items, onSelect }) {
               </div>
             </div>
         </div>
+        }
     </div>
   );
 }
