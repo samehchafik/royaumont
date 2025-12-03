@@ -468,27 +468,27 @@ input[type="range"] {
     border-bottom-left-radius: 1rem;
 }
 
-.content {
-    padding: 16px 18px 20px;
+.card .content {
+    padding: 3em 2em;
 }
 
 .card h1 {
     font-size: 1.4rem;
-    margin: 0 0 4px;
+    margin: 0 0 1em;
     letter-spacing: 0.03em;
     text-transform: uppercase;
 }
 
 .card h2 {
     font-size: 1rem;
-    margin: 0 0 10px;
+    margin: 0 0 1em;
     font-weight: 400;
     color: #bbbbbb;
     
 }
 
 .card p {
-    margin: 0 0 10px;
+    margin: 0 0 0.7em;
     line-height: 1.5;
     font-size: 0.95rem;
 }
@@ -504,7 +504,7 @@ input[type="range"] {
 .card .copyright {
     display: inline-block;
     margin-top: 6px;
-    padding: 3px 8px;
+    padding: 0.5em 1em;
     border-radius: 999px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     font-size: 0.7rem;
