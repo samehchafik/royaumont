@@ -55,6 +55,7 @@ body {
 
 .gallerie-container {
     order: 2;
+    overflow: hidden;
 }
 
 .gallerie{
@@ -75,7 +76,7 @@ body {
     position: relative;
     flex-shrink: 0;
     background-color: var(--primary-color);
-    background-image: url(imgs/sound-wave.png);
+    background-image: var(--soundwave-url);
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: 50%;
@@ -148,6 +149,21 @@ button:hover {
 button:focus {
     outline: 4px auto var(--secondary-color) !important;
 }
+.home-button {
+    z-index: 11;
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    top: 2rem;
+    right: 20px ;
+    text-transform: uppercase;
+    color: var(--lightest-color);
+    cursor: pointer;
+    opacity: 0.7;
+}
+.home-button:hover {
+    opacity: 1;
+}
 
 .bt-play {
     z-index: 11;
@@ -160,16 +176,7 @@ button:focus {
     left: 0;
     transform: translateY(-50%);
 }
-.home-button{
-    z-index: 11;
-    position: absolute;
-    margin: auto;
-    width: 100px;
-    height: 50px;
-    top: 2rem;
-    right: 20px ;
-    
-}
+
 .playing .btn-play {
     top: calc(100vh - var(--controls-height) / 2);
 }
@@ -196,7 +203,7 @@ button:focus {
     flex-grow: 1;
     width: 100%;
 }
-.player h2{
+.player h2 {
     display: block;
     position: absolute;
     top: 20px;
@@ -207,7 +214,9 @@ button:focus {
     margin: 0;
     text-shadow: 0 0 5px black;
 }
-
+.player h2:hover {
+    opacity: 1;
+}
 .controls {
     height: var(--controls-height);
     margin-bottom: 0 !important;
@@ -275,16 +284,16 @@ input[type="range"] {
     padding: 3em 5em;
 }
 .info-box .close {
+    z-index: 11000000;
+     position: absolute;
     display: block;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
-    position: absolute;
     font-size: 1.5em;
     padding: 0.5em;
     line-height: 0;
-    bottom: calc(var(--info-margin) - 2.5em);
-    left:  calc(var(--info-margin));
-    color: var(--text);
+    top: 20px;
+    right:  20px;
     background-color: var(--secondary-color);
     color: white;
 }
@@ -302,7 +311,7 @@ input[type="range"] {
     Overflow: hidden;
     z-index: 200;
     background-color: var(--primary-color-fade);
-    background-image: url(imgs/logo-bibliotheques-royaumont-white.svg);
+    background-image: var(--logo-url);
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: 30vw;
@@ -428,7 +437,7 @@ input[type="range"] {
 
 .card-container {
     padding: 16px;
-    height: 80vh;
+    height: calc(100vh  - var(--gallery-height));
     width: 70%;
     margin: auto;
     box-sizing: border-box;
@@ -454,7 +463,7 @@ input[type="range"] {
 .card img {
     display: block;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
 }

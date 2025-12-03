@@ -106,9 +106,9 @@ export default function App() {
           }}>Play</button>)}
           </div>
           <div className="appWrap">
-            <div class="home-button">
-            <button onClick={()=>onSelect(undefined)}>Home</button>
-          </div>
+            
+            <div class="home-button" onClick={()=>onSelect(undefined)}>Accueil</div>
+          
             {collection ? (
                 <Gallerie manifest={manifestUrl} items={collection.galleries} onSelect={onSelect}/>
             ) : null}

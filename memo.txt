@@ -1,1 +1,8 @@
 http://localhost:5173/#gallerie=gallerie.json&manifest=https%3A%2F%2Fneuma.huma-num.fr%2Frest%2Fcollections%2Fall%253Acollabscore%253Aconcert%253AC045_0%2F_sources%2Fsync%2F_file%2F
+
+
+manifeste
+neuma
+https://neuma.huma-num.fr/home/corpus/all:collabscore:concert/
+édite
+https://neuma.huma-num.fr/home/corpus/all:collabscore:concert/iiif_collection.json

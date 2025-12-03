@@ -8,10 +8,15 @@
   --ternary-color: #4e56e4;
   --dark-layer: rgba(26, 26, 26, 0.7);
   --text: #222;
+  --lightest-color: #f5f2e8;
 
   --controls-height: 50px;
   --gallery-height: 190px;
   --gallery-padding: 20px;
+
+  --logo-url: url(imgs/logo-bibliotheques-royaumont-white.svg);
+  --soundwave-url: url(imgs/sound-wave.png);
+
 }
 
 @font-face {
