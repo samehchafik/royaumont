@@ -4,7 +4,7 @@ export default function Index({ collection, onSelect }) {
     return (
         <>
         
-        <div className='card-container'>
+        <div className='card-container home'>
             <div className="card">
                 {collection.index.image && (<img src={collection.index.image} alt={collection.index.title} />)}
                 <div className="content">

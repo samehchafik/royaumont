@@ -1,5 +1,7 @@
 @import "variables.css";
-
+* {
+    box-sizing: border-box;
+}
 html {
     width: 100%;
 }
@@ -154,8 +156,8 @@ button:focus {
     position: absolute;
     width: 100px;
     height: 50px;
-    top: 2rem;
-    right: 20px ;
+    top: 1.8rem;
+    right: 15px ;
     text-transform: uppercase;
     color: var(--lightest-color);
     cursor: pointer;
@@ -285,8 +287,9 @@ input[type="range"] {
 }
 .info-box .close {
     z-index: 11000000;
-     position: absolute;
+    position: absolute;
     display: block;
+    opacity: 0;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     font-size: 1.5em;
@@ -296,6 +299,7 @@ input[type="range"] {
     right:  20px;
     background-color: var(--secondary-color);
     color: white;
+    animation: fadein 0.5s 0.5s ease-in forwards;
 }
 
 
@@ -333,23 +337,47 @@ input[type="range"] {
         height: 0;
 	}
 }
+@keyframes fadein {
+    55% {
+		opacity: 0;
+	}
+    99% {
+		opacity: 1;
+	}
+    100% {
+        opacity: 1;
+	}
+}
 
 /**
 * Cards
 */
 
 .card-container {
-    padding: 16px;
-    height: calc(100vh  - var(--gallery-height));
-    width: 70%;
-    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
     box-sizing: border-box;
     overflow-y: auto;
+    padding: 10vh 10vw;
 }
-
+.card-container.home {
+    height: calc(100vh  - var(--gallery-height));
+}
 .card {
-    max-width: 480px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    width: 100%;        /* prend 100% de la largeur du parent */
+    height: calc(100% - 2rem);
+    max-height: 100%;
+    max-width: 100%;    /* au cas où tu aies un max-width défini ailleurs */
+    margin: 0;          /* optionnel : plus de centrage avec margin auto */
+    box-sizing: border-box;
+    overflow:unset;
+    max-width: 1000px;
+    margin: auto;
     background: #1b1b1b;
     border-radius: 1rem;
     overflow: hidden;
@@ -358,12 +386,12 @@ input[type="range"] {
     color: white;
     padding:0;
 }
-.card   a{
+.card a {
     color: inherit;
     text-decoration: none;
 }
-
 .card img {
+    width: 70%;
     display: block;
     height: auto;
     object-fit: contain;
@@ -473,6 +501,7 @@ button.commencer {
     .atlas-overlay > div {
         width: 65% !important;
     }
+    .card img {width: 50%;}
    
 }
 
@@ -495,17 +524,22 @@ button.commencer {
         --info-margin: 70px;
     }
 
-    .card-container {
+    .card-container.home {
         padding: 0;
         height: calc(100vh  - var(--gallery-height));
         width: 100%;
     }
-    .card {
+    .card-container.home .card {
+        margin: 0;
+        height: 100%;
         border-radius: 0;
+        flex-direction: column;
+        overflow-y: auto;
     }
-    .card img{
-        border-radius: 0;
+    .card-container.home .card img{
+        border-radius: 0 !important;
         width: 100%;
+        max-height: 50vh;
     }
 }
 
@@ -525,11 +559,6 @@ button.commencer {
     .info-box {
         --info-margin: 30px;
     }
-    .info-box .close {
-        left: calc(var(--info-margin) + 1em);
-        bottom: calc(var(--info-margin) + 1em);
-        z-index: 100;
-    }
     .controls {
         overflow-x: auto;
         gap: 10px;
@@ -546,30 +575,12 @@ button.commencer {
     .controls button {
         padding: 0.6em 0.5em;
     }
+    .player h2 {
+        max-width: 70vw;
+    }
 }
 
 @media only screen and (max-width: 421px) {
 
 }
 
-
-@media only screen and (min-width: 1025px) {
-
-
-    .card{
-        display: flex;
-        flex-direction: row;
-         display: flex;
-        flex-direction: row;
-        width: 100%;        /* prend 100% de la largeur du parent */
-        height: calc(100% - 2rem);
-        max-height: 100%;
-        max-width: 100%;    /* au cas où tu aies un max-width défini ailleurs */
-        margin: 0;          /* optionnel : plus de centrage avec margin auto */
-        box-sizing: border-box;
-        overflow:unset;
-    }
-    .card img {
-        width: 70%;
-    }
-}
