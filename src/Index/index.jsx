@@ -10,7 +10,7 @@ export default function Index({ collection, onSelect }) {
                 <div className="content">
                     <div className="meta"></div>
                     {collection.index.title && (<h1>{collection.index.title}</h1>)}
-                    {collection.index.summary && (<p>{collection.index.summary}</p>)}
+                    {collection.index.summary && (<div className="summary" dangerouslySetInnerHTML={{ __html: collection.index.summary }}/>)}
                     <button className="commencer" onClick={()=>onSelect(collection.galleries[0].manifest, true)}>Commencer</button>
                     {collection.index.copyright && (<div className='copyright'>{collection.index.copyright}</div>)}
                 </div>

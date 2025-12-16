@@ -59,9 +59,7 @@ export default function Gallerie({ manifest, items, onSelect }) {
                   <div class="meta"></div>
                    {info.title && (<h1>{info.title}</h1>)}
                   {info.creator && (<h2>{info.creator}</h2>)}
-                  <p>
-                    {info.summary}
-                  </p>
+                   <div className="summary" dangerouslySetInnerHTML={{ __html: info.summary }}/>
                   {info.copyright && (<p class="copyright">{info.copyright}</p>)}
                 </div>
               </div>
