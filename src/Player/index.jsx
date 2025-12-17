@@ -33,7 +33,7 @@ function CanvasAnnotations() {
 
 function Label() {
   const manifest = useManifest();
-  if (!manifest) return <div>Loading…</div>;
+  if (!manifest) return <div>Loading..</div>;
   return <LocaleString as="h2" className="text-2xl my-3">{manifest.label}</LocaleString>;
 }
 
