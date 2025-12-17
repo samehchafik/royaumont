@@ -18,14 +18,20 @@
 * wide Screen
 */
 @media only screen and (min-width: 1600px) {
-    .atlas-overlay > div {
-        width: 50% !important;
+    .video-contenaire {
+        width: 40% !important;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%) !important;
     }
 }
 
 @media only screen and (max-width: 1599px) {
-    .atlas-overlay > div {
+    .video-contenaire {
         width: 50% !important;
+        right: 0;
+        bottom: 0;
+        transform: none !important;
     }
 }
 
@@ -34,8 +40,9 @@
 */
 
 @media only screen and (max-width: 1199px) {
-    .atlas-overlay > div {
+    .video-contenaire {
         width: 55% !important;
+        transform: none !important;
     }
 }
 
@@ -44,8 +51,9 @@
 */
 
 @media only screen and (max-width: 1024px) {
-    .atlas-overlay > div {
+    .video-contenaire {
         width: 65% !important;
+        transform: none !important;
     }
     .card img {width: 50%;}
    
@@ -57,14 +65,13 @@
 */
 
 @media only screen and (max-width: 768px) {
-    .atlas-overlay > div {
+    .video-contenaire {
         transform: none !important;
         width: 100% !important;
         height: auto !important;
         aspect-ratio: 16/9 !important;
         bottom: 0 !important;
         right: 0 !important;
-        top: auto !important;
     }
     .info-box {
         --info-margin: 70px;
@@ -75,16 +82,17 @@
         height: calc(100vh  - var(--gallery-height));
         width: 100%;
     }
-    .card-container.home .card {
+    .card-container .card {
         margin: 0;
         height: 100%;
         border-radius: 0;
         flex-direction: column;
         overflow-y: auto;
     }
-    .card-container.home .card img{
+    .card-container .card img{
         border-radius: 0 !important;
         width: 100%;
+        max-width: none;
         max-height: 50vh;
     }
 }
