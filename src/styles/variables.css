@@ -17,6 +17,9 @@
   --logo-url: url(imgs/logo-bibliotheques-royaumont-white.svg);
   --soundwave-url: url(imgs/sound-wave.png);
 
+  --font-text: "DINPro", sans-serif;
+  --font-title: "Inknut", serif;
+
 }
 
 @font-face {
@@ -30,6 +33,13 @@
   font-weight:400;
   font-style:normal;
 }
+@font-face {
+  font-family: "Inknut";
+  src: url(/fonts/InknutAntiqua-Regular.ttf) format("truetype");
+  font-weight:500;
+  font-style:normal
+}
+
 @font-face {
   font-family: "DINPro";
   src:url(/fonts/DINPro-Medium.eot);
