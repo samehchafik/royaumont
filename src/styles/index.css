@@ -111,10 +111,10 @@ button:focus {
     font-family: var(--font-title);
     top: 20px;
     right: 20px;
+    height: auto !important;
     max-width: 40%;
-    height: 30%;
     text-align: right;
-    opacity: 0.9;
+    opacity: 1;
     color: var(--primary-color-fade);
     z-index: 20;
     margin: 0;
@@ -125,6 +125,7 @@ button:focus {
 .player h2:hover {
     opacity: 1 !important;
     height: auto !important;
+    color: white;
 }
 .player h2 > span {
     display: block;
@@ -138,15 +139,13 @@ button:focus {
 
 @keyframes fadesmooth {
     55% {
-		opacity: 0.9;
+		opacity: 1;
 	}
     99% {
-		opacity: 0.4;
-        height: 1.5em;
+		opacity: 0.6;
 	}
     100% {
-        opacity: 0.4;
-        height: 1.5em;
+        opacity: 0.6;
 	}
 }
 
