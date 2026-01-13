@@ -126,15 +126,14 @@ button:focus {
     opacity: 1 !important;
     height: auto !important;
 }
-.player h2 span {
+.player h2 > span {
     display: block;
 }
-span.titre {
 
-}
-span.sous-titre {
+.player h2 > span:nth-child(2) {
     font-size: 0.8em;
-    line-height: 1.3em;
+    line-height: 1.4em;
+    margin-top: 0.5em;
 }
 
 @keyframes fadesmooth {
