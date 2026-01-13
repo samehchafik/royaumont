@@ -126,6 +126,17 @@ button:focus {
     opacity: 1 !important;
     height: auto !important;
 }
+.player h2 span {
+    display: block;
+}
+span.titre {
+
+}
+span.sous-titre {
+    font-size: 0.8em;
+    line-height: 1.3em;
+}
+
 @keyframes fadesmooth {
     55% {
 		opacity: 0.9;

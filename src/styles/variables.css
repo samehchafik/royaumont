@@ -20,6 +20,8 @@
   --font-text: "DINPro", sans-serif;
   --font-title: "Inknut", serif;
 
+  --image-style: cover;
+
 }
 
 @font-face {
