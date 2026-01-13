@@ -352,14 +352,24 @@ input[type="range"] {
     opacity: 0;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
-    font-size: 1.5em;
-    padding: 0.5em;
-    line-height: 0;
+    font-size: 1.5rem;
+    width: 40px;
+    padding: 0;
+    line-height: 0px;
     top: 20px;
     right:  20px;
     background-color: var(--secondary-color);
-    color: white;
+    color: var(--secondary-color);
     animation: fadein 0.5s 0.5s ease-in forwards;
+}
+.info-box .close:before {
+    content: "×";
+    color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 0;
 }
 
 
