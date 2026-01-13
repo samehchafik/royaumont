@@ -34,7 +34,14 @@ function CanvasAnnotations() {
 function Label() {
   const manifest = useManifest();
   if (!manifest) return <div>Loading..</div>;
-  return <LocaleString as="h2" className="text-2xl my-3">{manifest.label}</LocaleString>;
+  
+  if(manifest.label && manifest.label.fr){
+    for(let i=0; i < manifest.label.fr.length; i ++){
+      manifest.label.fr[i] = `<span>${manifest.label && manifest.label.fr[i]}</span>`
+    }
+  }
+  console.log("Label ??", manifest.label);
+  return <LocaleString as="h2" enableDangerouslySetInnerHTML="true" className="text-2xl my-3">{manifest.label}</LocaleString>;
 }
 
 function TimelineControlsBundle({ onControlsReady, onPlay=()=>{}, onPause=()=>{} }) {
