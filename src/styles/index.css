@@ -15,6 +15,8 @@ body {
     background-color: var(--primary-color-fade);
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
+    min-height: 100dvh;
     padding: 0 !important;
     overflow: hidden;
 }
