@@ -61,7 +61,7 @@ export default function App() {
 
 
   const [btPlaying, setBtPlaying] = useState("bt-play");
-  const [contenaireClass, setContenaireClass] = useState("player-contenaire");
+  const [containerClass, setcontainerClass] = useState("player-container");
 
   const ctlRef = useRef(null);
 
@@ -69,8 +69,8 @@ export default function App() {
 
 
   const handleControlsReady = useCallback((api) => { ctlRef.current = api; }, []);
-  const handlePlay         = useCallback(() => {console.log("play"); setBtPlaying('bt-play hide'); setContenaireClass("player-contenaire playing")}, []);
-  const handlePause        = useCallback(() => {console.log("pause", ctlRef);setBtPlaying('bt-play'); setContenaireClass("player-contenaire")}, []);
+  const handlePlay         = useCallback(() => {console.log("play"); setBtPlaying('bt-play hide'); setcontainerClass("player-container playing")}, []);
+  const handlePause        = useCallback(() => {console.log("pause", ctlRef);setBtPlaying('bt-play'); setcontainerClass("player-container")}, []);
 
   const handleIsPlaying        = useCallback(() => {console.log("isPlaying");}, []);
 
@@ -99,7 +99,7 @@ export default function App() {
       <div className='signature' style={style}></div>
       
       { manifest ? 
-        (<div className={ contenaireClass}>
+        (<div className={ containerClass}>
           <div className={btPlaying}>
             {(<button onClick={() => {
             ctlRef.current?.play();
@@ -123,7 +123,7 @@ export default function App() {
               />
             </div>
           </div>
-        </div>) : (<div className={ contenaireClass}><Index collection={collection} onSelect={onSelect}/></div>)
+        </div>) : (<div className={ containerClass}><Index collection={collection} onSelect={onSelect}/></div>)
       }
     </>
   );
