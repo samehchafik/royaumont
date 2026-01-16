@@ -690,7 +690,7 @@ button.commencer {
     }
     .controls button {
         padding: 0.6em 0.5em;
-        color: white !important;
+        color: var(--text) !important;
     }
     .player h2 {
         top: 1.8rem;
